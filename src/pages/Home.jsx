@@ -27,9 +27,9 @@ const Home = ({ isAuth, deltePost, postList }) => {
               )}
             </div>
             <h1 className="font-bold text-3xl my-5">Title: {post.title}</h1>
-            <div className="max-h-[60vh] overflow-auto pr-5" id="markdown1">
+            {/* <div className="max-h-[60vh] overflow-auto pr-5" id="markdown1">
               <Markdown>{post.content}</Markdown>
-            </div>
+            </div> */}
             <p className="text-red-500">Likes: {post.likes}</p>
             <p className="text-blue-500 underline">
               Author: {post.author.name}
