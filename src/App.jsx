@@ -68,7 +68,7 @@ export default function App() {
         ) : (
           <>
             <NavLink exact to="/createpost" activeClassName="active">
-              Create Post
+              Create Postttt
             </NavLink>
             {/* <button onClick={signUserOut}>Logout</button> */}
             <NavLink exact to="/login" activeClassName="none">
