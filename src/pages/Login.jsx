@@ -1,12 +1,11 @@
 import { auth, provider } from "../firebase-config";
 import { signInWithPopup } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = ({ setIsAuth }) => {
   let navigate = useNavigate();
 
   const signIn = () => {
-    
     signInWithPopup(auth, provider).then((result) => {
       console.log("login successfully");
       localStorage.setItem("isAuth", true);
@@ -14,7 +13,7 @@ const Login = ({ setIsAuth }) => {
       navigate("/");
     });
   };
-  
+
   return (
     <div>
       <button
@@ -51,6 +50,13 @@ const Login = ({ setIsAuth }) => {
           Continue with Google
         </p>
       </button>
+      <Link to="/loginwithPhone">
+        <button className="mx-auto focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center  mt-10">
+          <p className="text-base font-medium ml-4 text-gray-700">
+            Continue with Google
+          </p>
+        </button>
+      </Link>
     </div>
   );
 };
