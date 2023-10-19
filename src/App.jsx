@@ -11,7 +11,7 @@ import Detail from "./pages/Detail";
 import Login from "./pages/Login";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
-import LoginWithPhone from "./pages/LoginWithPhone";
+// import LoginWithPhone from "./pages/LoginWithPhone";
 import { db } from "./firebase-config";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import UpdatePost from "./pages/UpdatePost";
@@ -68,7 +68,7 @@ export default function App() {
         ) : (
           <>
             <NavLink exact to="/createpost" activeClassName="active">
-              Create Postttt
+              Create Post
             </NavLink>
             {/* <button onClick={signUserOut}>Logout</button> */}
             <NavLink exact to="/login" activeClassName="none">
@@ -95,7 +95,7 @@ export default function App() {
           }
         />
         <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
-        <Route path="/loginWithPhone" element={<LoginWithPhone />} />
+        {/* <Route path="/loginWithPhone" element={<LoginWithPhone />} /> */}
         <Route path="/detail/:id" element={<Detail postList={postList} />} />
       </Routes>
     </Router>
