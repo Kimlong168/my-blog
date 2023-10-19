@@ -50,13 +50,13 @@ const Login = ({ setIsAuth }) => {
           Continue with Google
         </p>
       </button>
-      <Link to="/loginwithPhone">
+      {/* <Link to="/loginwithPhone">
         <button className="mx-auto focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center  mt-10">
           <p className="text-base font-medium ml-4 text-gray-700">
             Continue with Google
           </p>
         </button>
-      </Link>
+      </Link> */}
     </div>
   );
 };
