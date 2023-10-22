@@ -58,37 +58,62 @@ const Home = ({ isAuth, deltePost, postList }) => {
             <table className="w-full">
               <thead>
                 <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-
                   <th className="px-4 py-3">No</th>
                   <th className="px-4 py-3">Title</th>
                   <th className="px-4 py-3">Author</th>
+                  <th className="px-4 py-3">View</th>
                   <th className="px-4 py-3">Edit</th>
                   <th className="px-4 py-3">Delete</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                {postList.map((post,index) => (
+                {postList.map((post, index) => (
                   <>
                     <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                      <td className="px-4 py-3">{index+1}</td>
+                      <td className="px-4 py-3">{index + 1}</td>
                       <td className="px-4 py-3">{post.title}</td>
                       <td className="px-4 py-3">{post.author.name}</td>
-                      <td className="px-4 py-3 text-sm text-center">
-                        <Link to={`/updatepost/${post.id}`}>
-                          <div className="px-2 py-1.5 rounded bg-green-600 text-white">
-                            Edit
+                      <td className="px-4 py-3 text-sm text-center cursor-pointer">
+                        <Link to={`/detail/${post.id}`}>
+                          <div className="px-2 py-1.5 rounded bg-yellow-500 text-white cursor-pointer">
+                            View
                           </div>
                         </Link>
                       </td>
+                      {isAuth && post.author.id === auth.currentUser.uid ? (
+                        <>
+                          <td className="px-4 py-3 text-sm text-center">
+                            <Link to={`/updatepost/${post.id}`}>
+                              <div className="px-2 py-1.5 rounded bg-green-600 text-white">
+                                Edit
+                              </div>
+                            </Link>
+                          </td>
 
-                      <td className="px-4 py-3 text-sm text-center cursor-pointer">
-                        <div
-                          onClick={() => deltePost(post.id)}
-                          className="px-2 py-1.5 rounded bg-red-600 text-white"
-                        >
-                          Delete
-                        </div>
-                      </td>
+                          <td className="px-4 py-3 text-sm text-center cursor-pointer">
+                            <div
+                              onClick={() => deltePost(post.id)}
+                              className="px-2 py-1.5 rounded bg-red-600 text-white"
+                            >
+                              Delete
+                            </div>
+                          </td>
+                        </>
+                      ) : (
+                        <>
+                          <td className="px-4 py-3 text-sm text-center">
+                            <div className="px-2 py-1.5 rounded bg-green-600 text-white cursor-not-allowed">
+                              Edit
+                            </div>
+                          </td>
+
+                          <td className="px-4 py-3 text-sm text-center ">
+                            <div className="px-2 py-1.5 rounded bg-red-600 text-white cursor-not-allowed">
+                              Delete
+                            </div>
+                          </td>
+                        </>
+                      )}
                     </tr>
                   </>
                 ))}
