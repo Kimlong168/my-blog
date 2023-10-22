@@ -1,8 +1,13 @@
 import { auth } from "../firebase-config";
-import Markdown from "markdown-to-jsx";
+import React from "react";
+// import Markdown from "markdown-to-jsx";
+import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
-
+import TransitionsModal from "../components/TransitionsModal";
 const Home = ({ isAuth, deltePost, postList }) => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
   return (
     <>
       <div className=" flex flex-col gap-3 p-3 lg:p-8">
@@ -123,6 +128,8 @@ const Home = ({ isAuth, deltePost, postList }) => {
           <div className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"></div>
         </div>
       </div>
+      {/* <Button onClick={handleOpen}>Open modal</Button>
+      <TransitionsModal open={open} handleClose={handleClose} /> */}
     </>
   );
 };

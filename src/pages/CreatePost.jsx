@@ -8,6 +8,7 @@ import Showdown from "showdown";
 const CreatePost = ({ setIsUpdated }) => {
   const [title, setTitle] = useState("");
   const [img, setImg] = useState("");
+  const [tags, setTags] = useState("");
   const [content, setContent] = useState("");
   const [authorName, setAuthorName] = useState(auth.currentUser.displayName);
   const [selectedTab, setSelectedTab] = useState("write");
@@ -24,6 +25,7 @@ const CreatePost = ({ setIsUpdated }) => {
       title: title,
       content: content,
       img: img,
+      tags: tags,
       likes: 0,
       date: formattedDate,
       author: {
@@ -67,6 +69,14 @@ const CreatePost = ({ setIsUpdated }) => {
           className="border p-2 rounded w-full outline-none mb-5"
           value={img}
           onChange={(e) => setImg(e.target.value)}
+        />
+         <label className="font-bold mb-2 text-xl">Tag</label>
+        <input
+          type="text"
+          placeholder="Tag (optional) (eg: technology,study,..)"
+          className="border p-2 rounded w-full outline-none mb-5"
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
         />
         <label className="font-bold mb-2 text-xl">Author name</label>
         <input

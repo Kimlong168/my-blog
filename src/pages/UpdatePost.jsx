@@ -12,6 +12,7 @@ const UpdatePost = ({ postList, setIsUpdated }) => {
   
   const [title, setTitle] = useState(post.title);
   const [img, setImg] = useState(post.img || "");
+  const [tags,setTags] = useState(post.tags || "");
   const [content, setContent] = useState(post.content);
   const [authorName, setAuthorName] = useState(post.author.name);
   const [selectedTab, setSelectedTab] = useState("write");
@@ -25,6 +26,7 @@ const UpdatePost = ({ postList, setIsUpdated }) => {
         title: title,
         content: content,
         img: img,
+        tags: tags,
         author: {
           id: auth.currentUser.uid,
           name: authorName,
@@ -67,6 +69,14 @@ const UpdatePost = ({ postList, setIsUpdated }) => {
           className="border p-2 rounded w-full outline-none mb-5"
           value={img}
           onChange={(e) => setImg(e.target.value)}
+        />
+        <label className="font-bold mb-2 text-xl">Tags</label>
+        <input
+          type="text"
+          placeholder="Tag (optional) (eg: technology,study,..)"
+          className="border p-2 rounded w-full outline-none mb-5"
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
         />
         <label className="font-bold mb-2 text-xl">Author name</label>
         <input
