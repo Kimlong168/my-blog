@@ -14,12 +14,18 @@ const CreatePost = ({ setIsUpdated }) => {
   const postCollectionRef = collection(db, "posts");
   let navigate = useNavigate();
 
+  //date
+  const currentDate = new Date();
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = currentDate.toLocaleDateString(undefined, options);
+
   const createPost = () => {
     addDoc(postCollectionRef, {
       title: title,
       content: content,
       img: img,
       likes: 0,
+      date: formattedDate,
       author: {
         id: auth.currentUser.uid,
         name: authorName,
