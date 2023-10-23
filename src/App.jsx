@@ -13,7 +13,14 @@ import { signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
 // import LoginWithPhone from "./pages/LoginWithPhone";
 import { db } from "./firebase-config";
-import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  deleteDoc,
+  doc,
+  query,
+  orderBy,
+} from "firebase/firestore";
 import UpdatePost from "./pages/UpdatePost";
 
 export default function App() {
@@ -33,7 +40,9 @@ export default function App() {
 
   useEffect(() => {
     const getPosts = async () => {
-      const data = await getDocs(postCollectionRef);
+      const data = await getDocs(
+        query(postCollectionRef, orderBy("date"))
+      );
       console.log("data", data);
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };

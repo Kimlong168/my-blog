@@ -9,10 +9,10 @@ import Showdown from "showdown";
 const UpdatePost = ({ postList, setIsUpdated }) => {
   const { post: postParam } = useParams();
   const post = postList.filter((post) => post.id === postParam)[0];
-  
+
   const [title, setTitle] = useState(post.title);
   const [img, setImg] = useState(post.img || "");
-  const [tags,setTags] = useState(post.tags || "");
+  const [tags, setTags] = useState(post.tags || "");
   const [content, setContent] = useState(post.content);
   const [authorName, setAuthorName] = useState(post.author.name);
   const [selectedTab, setSelectedTab] = useState("write");
@@ -26,7 +26,7 @@ const UpdatePost = ({ postList, setIsUpdated }) => {
         title: title,
         content: content,
         img: img,
-        tags: tags,
+        tags: tags.replace(/\s/g, ""),
         author: {
           id: auth.currentUser.uid,
           name: authorName,

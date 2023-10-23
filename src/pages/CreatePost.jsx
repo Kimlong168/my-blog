@@ -25,7 +25,7 @@ const CreatePost = ({ setIsUpdated }) => {
       title: title,
       content: content,
       img: img,
-      tags: tags,
+      tags: tags.replace(/\s/g, ''),
       likes: 0,
       date: formattedDate,
       author: {
