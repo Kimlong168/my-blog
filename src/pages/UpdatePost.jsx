@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc,serverTimestamp } from "firebase/firestore";
 import { db, auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
 import ReactMde from "react-mde";
@@ -27,6 +27,7 @@ const UpdatePost = ({ postList, setIsUpdated }) => {
         content: content,
         img: img,
         tags: tags.replace(/\s/g, ""),
+        // createdAt: serverTimestamp(),
         author: {
           id: auth.currentUser.uid,
           name: authorName,

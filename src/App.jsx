@@ -20,6 +20,7 @@ import {
   doc,
   query,
   orderBy,
+  FieldPath,
 } from "firebase/firestore";
 import UpdatePost from "./pages/UpdatePost";
 
@@ -41,7 +42,7 @@ export default function App() {
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(
-        query(postCollectionRef, orderBy("date"))
+        query(postCollectionRef, orderBy("createdAt", "desc"))
       );
       console.log("data", data);
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));

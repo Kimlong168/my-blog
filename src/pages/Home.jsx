@@ -1,13 +1,13 @@
 import { auth } from "../firebase-config";
-import React from "react";
+// import React from "react";
 // import Markdown from "markdown-to-jsx";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import TransitionsModal from "../components/TransitionsModal";
+// import TransitionsModal from "../components/TransitionsModal";
 const Home = ({ isAuth, deltePost, postList }) => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // const [open, setOpen] = React.useState(false);
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
   return (
     <>
       <div className=" flex flex-col gap-3 p-3 lg:p-8">
@@ -67,6 +67,7 @@ const Home = ({ isAuth, deltePost, postList }) => {
                   <th className="px-4 py-3">Title</th>
                   <th className="px-4 py-3">Tags</th>
                   <th className="px-4 py-3">Author</th>
+                  <th className="px-4 py-3">Date</th>
                   <th className="px-4 py-3">View</th>
                   <th className="px-4 py-3">Edit</th>
                   <th className="px-4 py-3">Delete</th>
@@ -82,6 +83,7 @@ const Home = ({ isAuth, deltePost, postList }) => {
                         {post.tags ? post.tags : ""}
                       </td>
                       <td className="px-4 py-3">{post.author.name}</td>
+                      <td className="px-4 py-3">{post.date}</td>
                       <td className="px-4 py-3 text-sm text-center cursor-pointer">
                         <Link to={`/detail/${post.id}`}>
                           <div className="px-2 py-1.5 rounded bg-yellow-500 text-white cursor-pointer">

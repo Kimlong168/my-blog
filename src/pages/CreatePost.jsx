@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db, auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
 import ReactMde from "react-mde";
@@ -25,9 +25,10 @@ const CreatePost = ({ setIsUpdated }) => {
       title: title,
       content: content,
       img: img,
-      tags: tags.replace(/\s/g, ''),
+      tags: tags.replace(/\s/g, ""),
       likes: 0,
       date: formattedDate,
+      createdAt: serverTimestamp(),
       author: {
         id: auth.currentUser.uid,
         name: authorName,
@@ -70,7 +71,7 @@ const CreatePost = ({ setIsUpdated }) => {
           value={img}
           onChange={(e) => setImg(e.target.value)}
         />
-         <label className="font-bold mb-2 text-xl">Tag</label>
+        <label className="font-bold mb-2 text-xl">Tag</label>
         <input
           type="text"
           placeholder="Tag (optional) (eg: technology,study,..)"

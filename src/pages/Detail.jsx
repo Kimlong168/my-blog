@@ -14,6 +14,8 @@ const Detail = ({ postList }) => {
               <h1>{post.title}</h1>
               <Markdown>{post.content}</Markdown>
               <p>{post.author.name}</p>
+              {/* <p>Created At: {post.createdAt}</p> */}
+              <p>Date: {post.date}</p>
             </>
           );
         }
