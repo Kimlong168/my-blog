@@ -20,7 +20,6 @@ import {
   doc,
   query,
   orderBy,
-  FieldPath,
 } from "firebase/firestore";
 import UpdatePost from "./pages/UpdatePost";
 
