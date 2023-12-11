@@ -91,7 +91,7 @@ const Home = ({ isAuth, deltePost, postList }) => {
                           </div>
                         </Link>
                       </td>
-                      {isAuth && post.author.id === auth.currentUser.uid ? (
+                      {isAuth ? (
                         <>
                           <td className="px-4 py-3 text-sm text-center">
                             <Link to={`/updatepost/${post.id}`}>
